@@ -5,7 +5,9 @@ Vue.use(Vuex);
 
 export default new Vuex.Store({
   state: {
-    ideas: {}
+    ideas: {},
+    courses: [],
+    paperWorks: []
   },
   mutations: {
     CREATE_IDEAS(state, payload){
@@ -18,6 +20,12 @@ export default new Vuex.Store({
     },
     SAVE_IDEAS_ORDERING(state, payload){
       state.ideas = {...payload};
+    },
+    SAVE_COURSES_ORDERING(state, payload){
+      state.courses = [...payload];
+    },
+    SAVE_PAYPERWORKS_ORDERING(state, payload){
+      state.paperWorks = [...payload];
     }
   },
   actions: {
@@ -31,7 +39,13 @@ export default new Vuex.Store({
         ideas[idea.id] = idea;
       });
       commit("SAVE_IDEAS_ORDERING", ideas);
-    }
+    },
+    saveCoursesOrdering({ commit }, payload){
+      commit("SAVE_COURSES_ORDERING", payload);
+    },
+    savePaperworksOrdering({ commit }, payload){
+      commit("SAVE_PAYPERWORKS_ORDERING", payload);
+    },
   },
   getters: {
     allIdeas(state){
@@ -43,7 +57,13 @@ export default new Vuex.Store({
           return idea;
         });
         return allIdeas;
-    }
+    },
+    courses(state){
+      return state.courses;
+    },
+    paperWorks(state){
+      return state.paperWorks;
+    },
   },
   modules: {}
 });

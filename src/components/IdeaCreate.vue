@@ -1,7 +1,7 @@
 <template>
   <div>
     <form @submit.prevent="create">
-      <label for="idea-title">Idea's title</label>
+      <label for="idea-title">Idea's title: </label>
       <input type="text" id="id-title" v-model="title" />
       <button type="submit">Create</button>
     </form>
